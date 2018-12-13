@@ -35,7 +35,7 @@ class Auditor {
   }
 
   filterAndCombineByThreshold(data, threshold) {
-    let severityIndex = this.severities.indexOf(threshold);
+    let severityIndex = this.severities.indexOf(threshold) + 1;
     let combinedAdvisories = [];
     _.times(severityIndex, index => {
       combinedAdvisories = combinedAdvisories.concat(data[index].advisories);

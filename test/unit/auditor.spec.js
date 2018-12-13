@@ -67,4 +67,37 @@ describe('Auditor', () => {
       })
     });
   });
+
+  describe(".filterAndCombineByThreshold()", () => {
+
+    let jsonData = "";
+    let auditedData = "";
+
+    beforeEach(() => {
+      auditor     = new Auditor(null, { threshold: 'low', registry: 'https://npmjs.org/registry', json: false});
+      jsonData    = JSON.parse(testJSON);
+      auditedData = auditor.mapSeverities(jsonData);
+    });
+
+
+    it("should filter based on the threshold", () => {
+      let data = auditor.filterAndCombineByThreshold(auditedData, 'low');
+      expect(data.length).to.eql(3)
+    });
+
+    it("should filter based on the threshold and return lower items", () => {
+      let data = auditor.filterAndCombineByThreshold(auditedData, 'moderate');
+      expect(data.length).to.eql(4)
+    });
+
+    it("should include all items when severity is critical", () => {
+      let data = auditor.filterAndCombineByThreshold(auditedData, 'critical');
+      expect(data.length).to.eql(7)
+    });
+
+    it("should not include any items when there is no severity", () => {
+      let data = auditor.filterAndCombineByThreshold(auditedData, '');
+      expect(data.length).to.eql(0)
+    });
+  });
 });
