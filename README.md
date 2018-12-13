@@ -4,6 +4,9 @@
 
 # npm-auditor-ci
 
+[![Build Status](https://travis-ci.org/willywos/npm-auditor-ci.svg?branch=master)](https://travis-ci.org/willywos/npm-auditor-ci)
+[![Maintainability](https://api.codeclimate.com/v1/badges/e2ef554d23dd942f6bbd/maintainability)](https://codeclimate.com/github/willywos/npm-auditor-ci/maintainability)
+
 NPM Auditor CI is meant to be used inside your JS project or
 globally on your CI environment. It returns the correct exit code and wraps npm audit to provide additional features.
 
