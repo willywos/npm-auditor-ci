@@ -67,15 +67,17 @@ class Auditor {
 
   run() {
     child.exec(this.buildCmdLine(), (err, stdout, stderr) => {
-      if (err !== null) {
+      let data = '';
+      try {
+        data = JSON.parse(stdout);
+      } catch (ex) {
         console.log('npm-auditor-ci encountered an unexpected error.');
-        console.log(stderr);
+        console.log('error:', err);
+        console.log('stderr:', stderr);
         Auditor.exitWithCode(255);
       }
 
-      let data = JSON.parse(stdout);
       const exitData = this.processJSON(data);
-
       if (this.opts.json) {
         console.log(JSON.stringify(exitData.data));
       } else {
@@ -85,7 +87,7 @@ class Auditor {
         );
         if (exitData.code === 1) {
           console.log(
-            cTable.getTable(this.formatExitDataForAdvisory(exitData.data))
+            cTable.getTable(Auditor.formatExitDataForAdvisory(exitData.data))
           );
         }
       }
