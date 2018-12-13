@@ -1,0 +1,22 @@
+// Use this file as a starting point for your project's .eslintrc.
+// Copy this file, and add rule overrides as needed.
+{
+    extends: "airbnb-base/legacy",
+    parser: "babel-eslint",
+    rules: {
+      "space-after-keywords": 0,
+      "space-before-blocks": 0,
+      "space-before-function-paren": 0,
+      "space-before-keywords": 0,
+      "space-in-parens": 0,
+      "func-names": 0,
+      "func-style": 0,
+      "no-multi-spaces": [2, { exceptions: { "ImportDeclaration": true, "VariableDeclarator": true, "AssignmentExpression": true } }],
+      "prefer-arrow-callback": 0,
+      "max-len": [2, 150, 4, {"ignoreUrls": true, "ignoreComments": true}],
+      "no-console":0,
+      "no-tabs": 0,
+      "no-param-reassign":0,
+      "arrow-body-style":0
+    }
+}

@@ -1,0 +1,10 @@
+.idea
+*.iml
+.DS_Store
+node_modules/
+npm-debug.log
+yarn*
+dist/
+lib
+.npmrc
+*.log
