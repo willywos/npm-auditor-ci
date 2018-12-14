@@ -6,11 +6,11 @@ describe('Cli', () => {
 
   describe("default arguments", () => {
     it("should default threshold to low", () => {
-        expect(cli.flags.threshold).to.eql('critical');
+        expect(cli.flags.threshold).to.eql('low');
     });
 
     it("should default ignoreDev to true", () => {
-        expect(cli.flags.ignoreDev).to.eql(true);
+        expect(cli.flags.ignoreDev).to.eql(false);
     });
 
     it("should default json to false", () => {

@@ -67,13 +67,13 @@ or you can add the npm command to an existing script like
 
 You can view the help section by running ```npm-auditor-ci --help```
 
-| Options       | Argument                       |Default                     | Description                         |
-| ------------- |:------------------------------|-----------------------------|:------------------------------------:|
-| --help        |                               |                             | Displays the help information below |
-| --threshold   | low, moderate, high, critical | low                         | |
-| --ignoreDev   | true or false                 | true                        | Decide to include development dependencies.    |
-| --json        | true or false                 | false                       | Outputs the results from the audit in JSON.    |
-| --registry    | https://registry.npmjs.org    | https://registry.npmjs.org  | Use a custom registry or the default npmjs.org |
+| Options     | Argument                       |Default                     | Description                                    |
+|:------------|:------------------------------|:----------------------------|:-----------------------------------------------|
+| help        |                               |                             | Displays the help information below.           |
+| threshold   | low, moderate, high, critical | low                         | Sets what level of severity to use.            |
+| ignoreDev   | true or false                 | false                       | Decide to include development dependencies.    |
+| json        | true or false                 | false                       | Outputs the results from the audit in JSON.    |
+| registry    | https://registry.npmjs.org    | https://registry.npmjs.org  | Use a custom registry or the default npmjs.org |
 
 If you specify a threshold of critical it's essentially running all advisories. It takes the level and alerts on all levels below that one.
 
@@ -83,7 +83,7 @@ For example if I use moderate
 $ npm-auditor-ci --threshold moderate
 ```
 
-I will get all advisories that are moderate AND also low. If you do high, you will get all advisories that are high, moderate and low.
+I will get all advisories that are moderate AND also high and critical. If you do high, you will get all advisories that are high and critical.
 
 
 ```
@@ -95,9 +95,9 @@ I will get all advisories that are moderate AND also low. If you do high, you wi
 
   Options
     --help,      -h  Displays help information
-    --threshold, -t  The threshold in which the auditor fails ('low', 'moderate', 'high', 'critical') (default 'critical')
-    --ignoreDev  -i  Ignores dev dependencies (default on)
-    --json       -j  Displays results in json format (default off)
+    --threshold, -t  The threshold in which the auditor fails ('critical', 'high', 'moderate', 'low')
+    --ignoreDev  -i  Ignores dev dependencies (default false)
+    --json       -j  Displays results in json format (default false)
     --registry   -r  Specifies which registry to use. Default (https://registry.npmjs.org/)
 
   Examples
@@ -111,8 +111,8 @@ I will get all advisories that are moderate AND also low. If you do high, you wi
     Have a problem? Want to help support?
     https://www.github.com/willywos/npm-auditor-ci
     Cheers! 🍻
-```
 
+```
 
 
 ### Contributing

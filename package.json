@@ -1,6 +1,6 @@
 {
   "name": "npm-auditor-ci",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "author": "willywos",
   "license": "MIT",
   "description": "A wrapper for 'npm audit' which can be used in CI.",

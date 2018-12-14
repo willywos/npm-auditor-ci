@@ -5,7 +5,7 @@ import cTable from 'console.table';
 class Auditor {
   opts = {};
 
-  severities = ['low', 'moderate', 'high', 'critical'];
+  severities = ['critical', 'high', 'moderate', 'low'];
 
   constructor(arg, options) {
     this.opts = options;
@@ -52,10 +52,24 @@ class Auditor {
     return { code: 0, data: [] };
   }
 
+  static findActionForModuleName(modulePaths, data) {
+    let paths = [];
+    paths = modulePaths.map(item => {
+      let rootPathName = item.split('>')[0];
+      let actionItem = _.find(data.actions, { module: rootPathName });
+      if (actionItem !== undefined) {
+        return actionItem.action + ' ' + rootPathName + ' ' + actionItem.target;
+      }
+      return rootPathName;
+    });
+    return _.uniq(paths).join(', ');
+  }
+
   static formatExitDataForAdvisory(data) {
     const tableData = data.map(item => {
       return {
         name: item.module_name,
+        action: Auditor.findActionForModuleName(item.findings[0].paths, data),
         version: item.findings[0].version,
         severity: item.severity,
         title: item.title,

@@ -10,7 +10,7 @@ describe('Auditor', () => {
 
   describe(".buildCmdLine()", () => {
 
-    it('should include a registry option', () => {
+    it('should include a registry option and json', () => {
       auditor = new Auditor(null, { registry: 'https://npmjs.org/registry', json: false});
       expect(auditor.buildCmdLine()).to.eql("npm audit --json --registry='https://npmjs.org/registry'")
     });
@@ -59,11 +59,12 @@ describe('Auditor', () => {
       let data = auditor.processJSON(jsonData).data;
       let firstRow = Auditor.formatExitDataForAdvisory(data)[0]
       expect(firstRow).to.eql({
-        name: 'superagent',
-        severity: 'low',
-        title: 'Large gzip Denial of Service',
-        url: 'https://npmjs.com/advisories/479',
-        version: '1.8.5'
+        name: 'growl',
+        action: 'gulp-mocha, mocha',
+        severity: 'critical',
+        title: 'Command Injection',
+        url: 'https://npmjs.com/advisories/146',
+        version: '1.9.2'
       })
     });
   });
@@ -81,23 +82,47 @@ describe('Auditor', () => {
 
 
     it("should filter based on the threshold", () => {
-      let data = auditor.filterAndCombineByThreshold(auditedData, 'low');
-      expect(data.length).to.eql(3)
+      let data = auditor.filterAndCombineByThreshold(auditedData, 'critical');
+      expect(data.length).to.eql(1)
     });
 
-    it("should filter based on the threshold and return lower items", () => {
+    it("should filter based on the threshold and return higher items", () => {
       let data = auditor.filterAndCombineByThreshold(auditedData, 'moderate');
       expect(data.length).to.eql(4)
     });
 
-    it("should include all items when severity is critical", () => {
-      let data = auditor.filterAndCombineByThreshold(auditedData, 'critical');
+    it("should include all items when severity is low", () => {
+      let data = auditor.filterAndCombineByThreshold(auditedData, 'low');
       expect(data.length).to.eql(7)
     });
 
     it("should not include any items when there is no severity", () => {
       let data = auditor.filterAndCombineByThreshold(auditedData, '');
       expect(data.length).to.eql(0)
+    });
+  });
+
+  describe('.findActionForModuleName()', () => {
+    let jsonData = "";
+    let auditedData = "";
+
+    beforeEach(() => {
+      auditor     = new Auditor(null, { threshold: 'low', registry: 'https://npmjs.org/registry', json: false});
+      jsonData    = JSON.parse(testJSON);
+      auditedData = auditor.mapSeverities(jsonData);
+    });
+
+    it("should find package information", () => {
+
+      let dataPaths = JSON.parse(`{
+        "paths": [
+          "gulp>vinyl-fs>glob-watcher>gaze>globule>glob>minimatch",
+          "gulp>vinyl-fs>glob-watcher>gaze>globule>minimatch"
+        ]
+      }`);
+
+      let data = Auditor.findActionForModuleName(dataPaths.paths, jsonData)
+      expect(data).to.eql("install gulp 4.0.0")
     });
   });
 });

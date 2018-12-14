@@ -8,8 +8,8 @@ export const cli = meow(
 	Options
 	  --help,      -h  Displays help information
 	  --threshold, -t  The threshold in which the auditor fails ('low', 'moderate', 'high', 'critical')
-	  --ignoreDev  -i  Ignores dev dependencies (default on)
-	  --json       -j  Displays results in json format (default off)
+	  --ignoreDev  -i  Ignores dev dependencies (default false)
+	  --json       -j  Displays results in json format (default false)
    --registry   -r  Specifies which registry to use. Default (https://registry.npmjs.org/)
 
 	Examples
@@ -30,11 +30,11 @@ export const cli = meow(
       threshold: {
         type: 'string',
         alias: 't',
-        default: 'critical'
+        default: 'low'
       },
       ignoreDev: {
         type: 'boolean',
-        default: true,
+        default: false,
         alias: 'i'
       },
       json: {
