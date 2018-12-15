@@ -74,6 +74,7 @@ You can view the help section by running ```npm-auditor-ci --help```
 | ignoreDev   | true or false                 | false                       | Decide to include development dependencies.    |
 | json        | true or false                 | false                       | Outputs the results from the audit in JSON.    |
 | registry    | https://registry.npmjs.org    | https://registry.npmjs.org  | Use a custom registry or the default npmjs.org |
+| version     |                               |                             | Displays the current versions                  |
 
 If you specify a threshold of critical it's essentially running all advisories. It takes the level and alerts on all levels below that one.
 
@@ -88,29 +89,30 @@ I will get all advisories that are moderate AND also high and critical. If you d
 
 ```
 
-  A wrapper for 'npm audit' which can be used in CI.
+wrapper for 'npm audit' which can be used in CI.
 
-   Usage
-    $ npm-auditor-ci
+Usage
+ $ npm-auditor-ci
 
-  Options
-    --help,      -h  Displays help information
-    --threshold, -t  The threshold in which the auditor fails ('critical', 'high', 'moderate', 'low')
-    --ignoreDev  -i  Ignores dev dependencies (default false)
-    --json       -j  Displays results in json format (default false)
-    --registry   -r  Specifies which registry to use. Default (https://registry.npmjs.org/)
+Options
+ --help,      -h  Displays help information
+ --threshold, -t  The threshold in which the auditor fails ('low', 'moderate', 'high', 'critical')
+ --ignoreDev  -i  Ignores dev dependencies (default false)
+ --json       -j  Displays results in json format (default false)
+ --registry   -r  Specifies which registry to use. Default (https://registry.npmjs.org/)
+ --version    -v  Gives the version number
 
-  Examples
-    $ npm-auditor-ci --json --registry=https://npm.mycompany.com/
-    Runs json with a different npm registry url
+Examples
+ $ npm-auditor-ci --json --registry=https://npm.mycompany.com/
+ Runs json with a different npm registry url
 
-    $ npm-auditor-ci --ignoreDev --threshold=high
-    Runs ignoring the dev dependencies and only fails on high level advisories
+ $ npm-auditor-ci --ignoreDev --threshold=high
+ Runs ignoring the dev dependencies and only fails on high level advisories
 
-  Help
-    Have a problem? Want to help support?
-    https://www.github.com/willywos/npm-auditor-ci
-    Cheers! 🍻
+Help
+ Have a problem? Want to help support?
+ https://www.github.com/willywos/npm-auditor-ci
+ Cheers! 🍻
 
 ```
 

@@ -11,6 +11,7 @@ export const cli = meow(
 	  --ignoreDev  -i  Ignores dev dependencies (default false)
 	  --json       -j  Displays results in json format (default false)
    --registry   -r  Specifies which registry to use. Default (https://registry.npmjs.org/)
+   --version    -v  Gives the version number
 
 	Examples
 	  $ npm-auditor-ci --json --registry=https://npm.mycompany.com/
