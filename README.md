@@ -10,6 +10,7 @@
 NPM Auditor CI is meant to be used inside your JS project or
 globally on your CI environment. It returns the correct exit code and wraps npm audit to provide additional features.
 
+![Movie](npm-auditor-ci.gif)
 
 ## Installation
 
