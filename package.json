@@ -61,7 +61,7 @@
     "eslint": "4.x",
     "eslint-config-airbnb-base": "13.1.0",
     "eslint-plugin-import": "^2.14.0",
-    "mocha": "^5.2.0",
+    "mocha": "7.1.2",
     "prettier": "^1.15.3",
     "sinon": "^7.1.1"
   }
