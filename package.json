@@ -10,8 +10,8 @@
     "dev": "babel -w src/ --out-dir dist --copy-files --ignore __tests__",
     "format": "prettier --write --ignore-path .gitignore {src,.}/*.js",
     "lint": "eslint --fix src/",
-    "test": "cross-env NODE_ENV=test mocha  --compilers js:@babel/register test/unit",
-    "test:watch": "cross-env NODE_ENV=test mocha --compilers js:@babel/register test/unit --watch",
+    "test": "cross-env NODE_ENV=test mocha --require @babel/register test/unit",
+    "test:watch": "cross-env NODE_ENV=test mocha --require @babel/register test/unit --watch",
     "ci": "npm run format && npm run lint && npm run test"
   },
   "release": {
