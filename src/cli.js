@@ -49,5 +49,5 @@ export const cli = meow(
         alias: 'r'
       }
     }
-  }
+  },
 );

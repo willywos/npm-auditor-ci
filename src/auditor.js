@@ -97,11 +97,11 @@ class Auditor {
       } else {
         console.log(
           'npm-auditor-ci found %d advisories.',
-          exitData.data.length
+          exitData.data.length,
         );
         if (exitData.code === 1) {
           console.log(
-            cTable.getTable(Auditor.formatExitDataForAdvisory(exitData.data))
+            cTable.getTable(Auditor.formatExitDataForAdvisory(exitData.data)),
           );
         }
       }
