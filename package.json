@@ -10,8 +10,8 @@
     "dev": "babel -w src/ --out-dir dist --copy-files --ignore __tests__",
     "format": "prettier --write --ignore-path .gitignore {src,.}/*.js",
     "lint": "eslint --fix src/",
-    "test": "cross-env NODE_ENV=test mocha  --compilers js:@babel/register test/unit",
-    "test:watch": "cross-env NODE_ENV=test mocha --compilers js:@babel/register test/unit --watch",
+    "test": "cross-env NODE_ENV=test mocha  --require @babel/register test/unit",
+    "test:watch": "cross-env NODE_ENV=test mocha --require @babel/register test/unit --watch",
     "ci": "npm run format && npm run lint && npm run test"
   },
   "release": {
@@ -44,25 +44,25 @@
     "node": ">=8.0"
   },
   "dependencies": {
-    "babel-polyfill": "^6.26.0",
-    "console.table": "^0.10.0",
-    "lodash": "^4.17.11",
-    "meow": "^5.0.0"
+    "babel-polyfill": "6.26.0",
+    "console.table": "0.10.0",
+    "lodash": "4.17.15",
+    "meow": "7.0.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.2.0",
-    "@babel/core": "^7.2.0",
-    "@babel/plugin-proposal-class-properties": "^7.2.1",
-    "@babel/preset-env": "^7.2.0",
-    "@babel/register": "^7.0.0",
-    "babel-eslint": "8",
-    "chai": "^4.2.0",
-    "cross-env": "^5.2.0",
-    "eslint": "4.x",
-    "eslint-config-airbnb-base": "13.1.0",
-    "eslint-plugin-import": "^2.14.0",
-    "mocha": "^5.2.0",
-    "prettier": "^1.15.3",
-    "sinon": "^7.1.1"
+    "@babel/cli": "7.8.4",
+    "@babel/core": "7.9.6",
+    "@babel/plugin-proposal-class-properties": "7.8.3",
+    "@babel/preset-env": "7.9.6",
+    "@babel/register": "7.9.0",
+    "babel-eslint": "10.1.0",
+    "chai": "4.2.0",
+    "cross-env": "7.0.2",
+    "eslint": "7.0.0",
+    "eslint-config-airbnb-base": "14.1.0",
+    "eslint-plugin-import": "2.20.2",
+    "mocha": "7.1.2",
+    "prettier": "2.0.5",
+    "sinon": "9.0.2"
   }
 }
