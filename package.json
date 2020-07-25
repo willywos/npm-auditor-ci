@@ -1,6 +1,6 @@
 {
   "name": "npm-auditor-ci",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "author": "willywos",
   "license": "MIT",
   "description": "A wrapper for 'npm audit' which can be used in CI.",
@@ -50,18 +50,18 @@
     "meow": "7.0.1"
   },
   "devDependencies": {
-    "@babel/cli": "7.8.4",
-    "@babel/core": "7.9.6",
-    "@babel/plugin-proposal-class-properties": "7.8.3",
-    "@babel/preset-env": "7.9.6",
-    "@babel/register": "7.9.0",
+    "@babel/cli": "7.10.5",
+    "@babel/core": "7.10.5",
+    "@babel/plugin-proposal-class-properties": "7.10.4",
+    "@babel/preset-env": "7.10.4",
+    "@babel/register": "7.10.5",
     "babel-eslint": "10.1.0",
     "chai": "4.2.0",
     "cross-env": "7.0.2",
-    "eslint": "7.0.0",
-    "eslint-config-airbnb-base": "14.1.0",
-    "eslint-plugin-import": "2.20.2",
-    "mocha": "7.1.2",
+    "eslint": "7.5.0",
+    "eslint-config-airbnb-base": "14.2.0",
+    "eslint-plugin-import": "2.22.0",
+    "mocha": "8.0.1",
     "prettier": "2.0.5",
     "sinon": "9.0.2"
   }

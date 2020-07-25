@@ -20,10 +20,10 @@ class Auditor {
   }
 
   mapSeverities(data) {
-    return this.severities.map(level => {
+    return this.severities.map((level) => {
       let advisoryData = _.filter(data.advisories, { severity: level });
       if (this.opts.ignoreDev) {
-        advisoryData = _.reject(advisoryData, item => {
+        advisoryData = _.reject(advisoryData, (item) => {
           return _.filter(item.findings, { dev: false }).length <= 0;
         });
       }
@@ -37,7 +37,7 @@ class Auditor {
   filterAndCombineByThreshold(data, threshold) {
     let severityIndex = this.severities.indexOf(threshold) + 1;
     let combinedAdvisories = [];
-    _.times(severityIndex, index => {
+    _.times(severityIndex, (index) => {
       combinedAdvisories = combinedAdvisories.concat(data[index].advisories);
     });
     return combinedAdvisories;
@@ -54,7 +54,7 @@ class Auditor {
 
   static findActionForModuleName(modulePaths, data) {
     let paths = [];
-    paths = modulePaths.map(item => {
+    paths = modulePaths.map((item) => {
       let rootPathName = item.split('>')[0];
       let actionItem = _.find(data.actions, { module: rootPathName });
       if (actionItem !== undefined) {
@@ -66,7 +66,7 @@ class Auditor {
   }
 
   static formatExitDataForAdvisory(data) {
-    const tableData = data.map(item => {
+    const tableData = data.map((item) => {
       return {
         name: item.module_name,
         action: Auditor.findActionForModuleName(item.findings[0].paths, data),
