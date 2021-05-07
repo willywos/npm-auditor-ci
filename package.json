@@ -46,7 +46,7 @@
   "dependencies": {
     "babel-polyfill": "6.26.0",
     "console.table": "0.10.0",
-    "lodash": "4.17.20",
+    "lodash": "4.17.21",
     "meow": "7.1.0"
   },
   "devDependencies": {
